@@ -58,16 +58,16 @@ export default function CodingPractice() {
         {/* Problem */}
         <div className="lg:w-[45%] border-r border-border overflow-auto p-6">
           {/* Question selector */}
-          <div className="flex gap-2 mb-6">
-            {codingQuestions.map((q) => (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {codingQuestions.map((q, i) => (
               <button
                 key={q.id}
                 onClick={() => handleQuestionChange(q)}
                 className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-colors ${
                   selectedQ.id === q.id ? 'bg-coding text-primary-foreground' : 'bg-muted text-muted-foreground'
-                }`}
+                } ${q.difficulty === 'easy' ? 'border border-success/30' : q.difficulty === 'medium' ? 'border border-warning/30' : 'border border-destructive/30'}`}
               >
-                {q.question.slice(0, 25)}...
+                {i + 1}
               </button>
             ))}
           </div>
